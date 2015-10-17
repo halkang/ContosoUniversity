@@ -4,6 +4,8 @@
     <EntitySetMapping Name="Course">
       <EntityTypeMapping TypeName="ContosoUniversityModel.Course">
         <MappingFragment StoreEntitySet="Course">
+          <ScalarProperty Name="ModifyedON" ColumnName="ModifyedON" />
+          <ScalarProperty Name="CreatedON" ColumnName="CreatedON" />
           <ScalarProperty Name="CourseID" ColumnName="CourseID" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Credits" ColumnName="Credits" />

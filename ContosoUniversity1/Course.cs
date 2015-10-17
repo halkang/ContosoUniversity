@@ -24,6 +24,8 @@ namespace ContosoUniversity1
         public string Title { get; set; }
         public int Credits { get; set; }
         public int DepartmentID { get; set; }
+        public System.DateTime CreatedON { get; set; }
+        public System.DateTime ModifyedON { get; set; }
     
         public virtual Department Department { get; set; }
         public virtual ICollection<Enrollment> Enrollment { get; set; }
