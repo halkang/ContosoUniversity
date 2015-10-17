@@ -70,6 +70,7 @@
     <Compile Include="Course.cs">
       <DependentUpon>ContosoUniversityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Course2.cs" />
     <Compile Include="Department.cs">
       <DependentUpon>ContosoUniversityModel.tt</DependentUpon>
     </Compile>

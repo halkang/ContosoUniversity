@@ -24,7 +24,7 @@ namespace ContosoUniversity1
                 var Departments = db.Department.Include("Course");
                 foreach (var dept in Departments)
                 {
-                    Console.WriteLine("#"+dept.Name);
+                    Console.WriteLine("#" + dept.Name);
                     foreach (var item in dept.Course)
                     {
                         Console.WriteLine("#############" + item.Title);
@@ -39,23 +39,33 @@ namespace ContosoUniversity1
                 var c1 = new Course()
                 {
                     ModifyedON = DateTime.Now
-                    ,DepartmentID = 1
-                    ,Title ="test"
+                    ,
+                    DepartmentID = 1
+                    ,
+                    Title = "test"
 
 
 
                 };
                 //db.Course.Add(c1);
-                
+
                 //db.SaveChanges();
 
 
-                var c2 = db.Course.Find(7);
-                
-                c2.Instructor.Add(db.Person.Find(5));
-               db.SaveChanges();
+                // var c2 = db.Course.Find(7);
 
-               
+                // c2.Instructor.Add(db.Person.Find(5));
+                //db.SaveChanges();
+                var dddd =db.Database.SqlQuery<Course2> (@"select d.Name as deptName,c.Title from [dbo].[Department]  d 
+inner join Course  c
+on d.DepartmentID =c.DepartmentID");
+
+                foreach (var item in dddd)
+                {
+                    Console.WriteLine("aaaa" + item.deptName); 
+                }
+
+
             }
         }
     }
