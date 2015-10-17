@@ -13,7 +13,7 @@ namespace ContosoUniversity1
             using (var db = new ContosoUniversityEntities())
             {
                 var data = from p in db.Course
-                           where p.Title.Contains("Git")
+                           where p.Title.StartsWith("Git")
                            select p;
  
                 foreach (var item in data)
