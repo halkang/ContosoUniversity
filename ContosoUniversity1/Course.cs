@@ -17,7 +17,7 @@ namespace ContosoUniversity1
         public Course()
         {
             this.Enrollment = new HashSet<Enrollment>();
-            this.Person = new HashSet<Person>();
+            this.Instructor = new HashSet<Person>();
         }
     
         public int CourseID { get; set; }
@@ -29,6 +29,6 @@ namespace ContosoUniversity1
     
         public virtual Department Department { get; set; }
         public virtual ICollection<Enrollment> Enrollment { get; set; }
-        public virtual ICollection<Person> Person { get; set; }
+        public virtual ICollection<Person> Instructor { get; set; }
     }
 }

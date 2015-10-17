@@ -45,11 +45,17 @@ namespace ContosoUniversity1
 
 
                 };
-                db.Course.Add(c1);
+                //db.Course.Add(c1);
                 
-                db.SaveChanges();
+                //db.SaveChanges();
 
 
+                var c2 = db.Course.Find(7);
+                
+                c2.Instructor.Add(db.Person.Find(5));
+               db.SaveChanges();
+
+               
             }
         }
     }
