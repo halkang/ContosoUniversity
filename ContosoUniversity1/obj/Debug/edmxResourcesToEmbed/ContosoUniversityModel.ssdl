@@ -58,6 +58,19 @@
     <Property Name="EnrollmentDate" Type="datetime" />
     <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
   </EntityType>
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'ContosoUniversity.dbo.vwCourse' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="vwCourse">
+    <Key>
+      <PropertyRef Name="CourseID" />
+      <PropertyRef Name="Credits" />
+    </Key>
+    <Property Name="RowIndex" Type="uniqueidentifier" />
+    <Property Name="CourseID" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="Credits" Type="int" Nullable="false" />
+    <Property Name="DepartmentName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <Association Name="FK_dbo_Course_dbo_Department_DepartmentID">
     <End Role="Department" Type="Self.Department" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -180,6 +193,15 @@
     <EntitySet Name="Enrollment" EntityType="Self.Enrollment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OfficeAssignment" EntityType="Self.OfficeAssignment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vwCourse" EntityType="Self.vwCourse" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwCourse].[RowIndex] AS [RowIndex], 
+    [vwCourse].[CourseID] AS [CourseID], 
+    [vwCourse].[Title] AS [Title], 
+    [vwCourse].[Credits] AS [Credits], 
+    [vwCourse].[DepartmentName] AS [DepartmentName]
+    FROM [dbo].[vwCourse] AS [vwCourse]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK_dbo_Course_dbo_Department_DepartmentID" Association="Self.FK_dbo_Course_dbo_Department_DepartmentID">
       <End Role="Department" EntitySet="Department" />
       <End Role="Course" EntitySet="Course" />

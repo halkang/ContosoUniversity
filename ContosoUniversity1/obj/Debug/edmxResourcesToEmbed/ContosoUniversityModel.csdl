@@ -183,6 +183,7 @@
     <FunctionImport Name="GetCourse" ReturnType="Collection(ContosoUniversityModel.GetCourse_Result)">
       <Parameter Name="p" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="vwCourse" EntityType="ContosoUniversityModel.vwCourse" />
   </EntityContainer>
   <ComplexType Name="Department_Insert_Result">
     <Property Type="Int32" Name="DepartmentID" Nullable="false" />
@@ -199,4 +200,15 @@
     <Member Name="two" Value="2" />
     <Member Name="three" Value="3" />
   </EnumType>
+  <EntityType Name="vwCourse">
+    <Key>
+      <PropertyRef Name="CourseID" />
+      <PropertyRef Name="Credits" />
+    </Key>
+    <Property Name="CourseID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Credits" Type="Int32" Nullable="false" />
+    <Property Name="DepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RowIndex" Type="Guid" />
+  </EntityType>
 </Schema>

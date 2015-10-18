@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,13 +14,17 @@ namespace ContosoUniversity1
 
             using (var db = new ContosoUniversityEntities())
             {
-
+                db.Database.Log = message => Trace.WriteLine(message);
                 //var c =db.GetCourse("%Git%");
-                var c = db.Course;
+                var c = db.vwCourse;
+                
                 foreach (var item in c)
                 {
-                    Console.WriteLine(item.Credits+item.Title);    
+                    Console.WriteLine(item.Credits+item.Title);
+                   
                 }
+
+               // Console.ReadKey();
                 
             }
 
