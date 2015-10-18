@@ -72,6 +72,9 @@
       <DependentUpon>ContosoUniversityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Course2.cs" />
+    <Compile Include="CourseCredits.cs">
+      <DependentUpon>ContosoUniversityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Department.cs">
       <DependentUpon>ContosoUniversityModel.tt</DependentUpon>
     </Compile>
@@ -79,6 +82,9 @@
       <DependentUpon>ContosoUniversityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Enrollment.cs">
+      <DependentUpon>ContosoUniversityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetCourse_Result.cs">
       <DependentUpon>ContosoUniversityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="OfficeAssignment.cs">

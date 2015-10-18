@@ -10,29 +10,56 @@ namespace ContosoUniversity1
     {
         static void Main(string[] args)
         {
+
+            using (var db = new ContosoUniversityEntities())
+            {
+
+                //var c =db.GetCourse("%Git%");
+                var c = db.Course;
+                foreach (var item in c)
+                {
+                    Console.WriteLine(item.Credits+item.Title);    
+                }
+                
+            }
+
+
+
+
+
+        }
+
+        private static void 並行模式()
+        {
+            using (var db = new ContosoUniversityEntities())
+            {
+                var c = db.Course.Find(1);
+                c.Credits = CourseCredits.one;
+                Console.ReadKey();
+                db.SaveChanges();
+            }
+        }
+
+        private static void 離線模式()
+        {
             Course c;
-            using (var db =new ContosoUniversityEntities())
+            using (var db = new ContosoUniversityEntities())
             {
                 c = db.Course.Find(1);
                 Console.WriteLine(c.Credits);
-                c.Credits=20;
+                c.Credits = CourseCredits.two;
                 Console.WriteLine(db.Entry(c).State);
             }
             using (var db = new ContosoUniversityEntities())
             {
-                Console.WriteLine(db.Entry(c).State);
+                //Console.WriteLine(db.Entry(c).State);
                 //db.Course.Attach(c);
-                db.Entry(c).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-               
+                //db.Entry(c).State = System.Data.Entity.EntityState.Modified;
+                Console.WriteLine(db.Entry(c).State);
+                //db.SaveChanges();
+
                 Console.WriteLine(c.Credits);
             }
-
-
-
-
-
-
         }
 
         private static void d1()
